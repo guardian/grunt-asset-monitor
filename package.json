@@ -1,0 +1,37 @@
+{
+  "name": "grunt-asset-monitor",
+  "version": "0.1.2",
+  "description": "Grunt task to analyse and log simple metrics of static assets to Amazon CloudWatch.",
+  "homepage": "https://github.com/guardian/grunt-asset-monitor",
+  "author": {
+    "name": "Patrick Hamann"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/guardian/grunt-asset-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guardian/grunt-asset-monitor/issues"
+  },
+  "main": "gruntfile.js",
+  "engines": {
+    "node": "*"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "prettysize": "~0.0.2",
+    "aws-sdk": "~2.0.0-rc4",
+    "q": "~0.9.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3"
+  },
+  "keywords": [
+    "gruntplugin",
+    "css",
+    "JS",
+    "css-metrics",
+    "analysis"
+  ]
+}
