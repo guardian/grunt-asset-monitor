@@ -55,10 +55,6 @@ module.exports = {
                     Unit : 'Kilobytes',
                     Dimensions : [
                         {
-                            Name : 'Stage',
-                            Value : 'PROD'
-                        },
-                        {
                             Name : 'Compression',
                             Value : 'None'
                         }
@@ -69,10 +65,6 @@ module.exports = {
                     Value : metricData.compressed,
                     Unit : 'Kilobytes',
                     Dimensions : [
-                        {
-                            Name : 'Stage',
-                            Value : 'PROD'
-                        },
                         {
                             Name : 'Compression',
                             Value : 'GZip'
