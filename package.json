@@ -1,6 +1,6 @@
 {
   "name": "grunt-asset-monitor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Grunt task to analyse and log simple metrics of static assets to Amazon CloudWatch.",
   "homepage": "https://github.com/guardian/grunt-asset-monitor",
   "author": {

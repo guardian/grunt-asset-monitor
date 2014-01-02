@@ -130,5 +130,6 @@ assetmonitor: {
 ## Release History
 
 ### 0.1.0 (23rd December 2013)
+### 0.1.3 (2nd January 2014)
 
 * Initial release
