@@ -123,7 +123,7 @@ assetmonitor: {
 
 ##Todo
 
-* Use [grunt-css-metrics](https://github.com/phamann/grunt-css-metrics) task to gather additional CSS metrics
+* ~~Use [grunt-css-metrics](https://github.com/phamann/grunt-css-metrics) task to gather additional CSS metrics~~
 * Use [Esprima](http://esprima.org/) to gather additional JS metrics
 * Write unit tests
 
@@ -131,5 +131,5 @@ assetmonitor: {
 
 ### 0.1.0 (23rd December 2013)
 ### 0.1.3 (2nd January 2014)
+### 0.1.4 (3rd January 2014)
 
-* Initial release
