@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-	analyse.options = this.options({
+	    analyse.options = this.options({
             gzipLevel: 6,
             pretty: true,
             credentials: '/etc/gu/frontend.properties'

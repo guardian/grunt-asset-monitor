@@ -22,7 +22,7 @@
     "prettysize": "~0.0.2",
     "aws-sdk": "~2.0.0-rc4",
     "q": "~0.9.7",
-    "css-metrics": "0.0.1"
+    "css-parse": "~1.7.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
