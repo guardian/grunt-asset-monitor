@@ -132,4 +132,5 @@ assetmonitor: {
 ### 0.1.0 (23rd December 2013)
 ### 0.1.3 (2nd January 2014)
 ### 0.1.4 (3rd January 2014)
+### 0.1.5 (27th January 2014)
 
