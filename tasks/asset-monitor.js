@@ -21,7 +21,7 @@ module.exports = function (grunt) {
             credentials: '/etc/gu/frontend.properties'
         });
 
-        grunt.util.async.forEachSeries(this.data.src, function(path, next) {
+        grunt.util.async.forEachSeries(grunt.file.expand(this.data.src), function(path, next) {
 
             if(!grunt.file.exists(path)) {
                 grunt.log.warn('Source file "' + path + '" not found.');
