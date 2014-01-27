@@ -56,22 +56,6 @@ module.exports = function(grunt) {
         return deferred.promise;
     };
 
-    exports.css = function(filename, fileData) {
-        var deferred = Q.defer();
-        if(path.extname(filename) === '.css') {
-            CSS.metrics(filename).then(function(cssData) {
-                fileData.data.rules = cssData.rules;
-                fileData.data.totalSelectors = cssData.totalSelectors;
-                fileData.data.averageSelectors = cssData.averageSelectors;
-
-                deferred.resolve(fileData);
-            }) ;
-        } else {
-            deferred.resolve(fileData);
-        }
-        return deferred.promise;
-    };
-
     exports.getSize = function(filename, pretty) {
         var size = 0;
         if (typeof filename === 'string') {
@@ -99,8 +83,6 @@ module.exports = function(grunt) {
             grunt.log.writeln('Uncompressed size: ' + String(fileData.data.uncompressedPretty).cyan);
             grunt.log.writeln('Compressed ' + String(fileData.data.compressedPretty).cyan);
 
-            return exports.css(filename, fileData);
-        }).then(function(fileData){
             //Configure cloudwatch credentials
             return cloudwatch.configure(exports.options.credentials).then(function(){
                 //Log metrics to cloudwatch
