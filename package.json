@@ -21,12 +21,13 @@
   "dependencies": {
     "prettysize": "~0.0.2",
     "aws-sdk": "~2.0.0-rc4",
-    "q": "~0.9.7",
-    "css-parse": "~1.7.0"
+    "q": "~1.0.0",
+    "css-parse": "~2.0.0",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3"
+    "grunt-contrib-jshint": "~0.10.0"
   },
   "keywords": [
     "gruntplugin",
@@ -34,5 +35,8 @@
     "JS",
     "css-metrics",
     "analysis"
-  ]
+  ],
+  "readme": "grunt-asset-monitor\n===================\n\nGrunt task to analyse and log simple metrics of static assets to Amazon CloudWatch.\n\nThis is tasks is used by the [Guardian's](http://www.theguardian.com/uk?view=mobile) frontend web project to monitor the performance of their client-side assets.\nOnce the data is in CloudWatch it can then be used to set alert thresholds when certain assets get too large.\n\n![Output screenshot](http://cl.ly/image/3343153U1D25/Screenshot%20from%202013-12-24%2014%3A19%3A38.png)\n\n## Getting Started\n\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-asset-monitor --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks('grunt-asset-monitor');\n```\n## Options\n\n### Credentials\n\nType: `String`\nDefault: `/etc/gu/frontend.properties`\n\nLocation of your properties file containing your AWS api credentials. This should be a raw utf-8 text file with key=value pairs:\n```\naws.access.region=YOUREGION\naws.access.key=YOURKEY\naws.access.secret.key=YOURSECRET\n```\n\n### gzipLevel\n\nType: `Number`\nDefault: `6`\n\nLevel of GZip compression to use to generate compressed file size output.\n\n### pretty\n\nType: `Boolean`\nDefault: `true`\n\nWhether to convert file size output to human readable format, example: ```245.2 Kb```\n\n## Examples\n\n### Configuration Example\n\nBasic example of a Grunt config containing the monitor task.\n```js\ngrunt.initConfig({\n        assetmonitor: {\n            dev: {\n                src: [\n                    'javascripts/app.js',\n                    'stylesheets/global.css'\n                ],\n                options: {\n                    credentials: '/etc/aws.properties'\n                }\n            }\n        },\n});\n\ngrunt.loadNpmTasks('grunt-asset-monitor');\n\ngrunt.registerTask('default', ['monitor']);\n```\n\n### Multiple Files\n\nRunning monitor against multiple CSS files. All the files specified in the `src` array will be analyzed by grunt-asset-monitor.\n```js\nassetmonitor: {\n  dist: {\n    src: [\n      'javascripts/app.js',\n      'stylesheets/global.css'\n    ]\n  }\n}\n```\n\n### Specifying Options\n\nExample of using the [options](https://github.com/guardian/grunt-asset-monitor#options).\n\n```js\nassetmonitor: {\n    dev: {\n        src: [\n            'test/*.min.css'\n        ],\n        options: {\n            gzipLevel: 4,\n            pretty: true,\n            credentials: 'aws.properties'\n        }\n    }\n}\n```\n\n### Specifying Files with Glob Pattern\n\nExample of using a glob pattern to target many files that should be analysed by asset-monitor. The example below will analyse all the files in the `css` directory that have an extension of `.css`.\n\n```js\nassetmonitor: {\n  dist: {\n    src: ['css/*.css']\n  }\n}\n```\n\n##Todo\n\n* ~~Use [grunt-css-metrics](https://github.com/phamann/grunt-css-metrics) task to gather additional CSS metrics~~\n* Use [Esprima](http://esprima.org/) to gather additional JS metrics\n* Write unit tests\n\n## Release History\n\n### 0.1.0 (23rd December 2013)\n### 0.1.3 (2nd January 2014)\n### 0.1.4 (3rd January 2014)\n### 0.1.5 (27th January 2014)\n\n",
+  "_id": "grunt-asset-monitor@0.1.5",
+  "_from": "grunt-asset-monitor@~0.1.5"
 }

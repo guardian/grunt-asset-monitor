@@ -7,10 +7,10 @@
  */
 'use strict';
 
-var fs = require('fs');
-var Q = require('q');
-var AWS = require('aws-sdk');
-var cloudwatch;
+var fs  = require('fs'),
+    Q   = require('q'),
+    AWS = require('aws-sdk'),
+    cloudwatch;
 
 module.exports = {
 
