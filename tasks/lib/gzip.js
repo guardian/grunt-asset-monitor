@@ -4,8 +4,7 @@ var fs         = require('fs'),
     path       = require('path'),
     Q          = require('q'),
     prettySize = require('prettysize'),
-    zlib       = require('zlib'),
-    grunt      = require('grunt');
+    zlib       = require('zlib');
 
 module.exports = function(grunt, options) {
 
@@ -25,7 +24,7 @@ module.exports = function(grunt, options) {
             return prettySize(size);
         }
         return Number(size);
-    };
+    }
 
     return function(filename) {
 
@@ -40,7 +39,7 @@ module.exports = function(grunt, options) {
         var destStream = fs.createWriteStream(dest);
         var compressor = zlib.createGzip.call(zlib, options);
 
-        compressor.on('error', function(err) {
+        compressor.on('error', function() {
             grunt.file.delete('tmp', {force: true});
             deferred.reject(new Error('GZip compression of ' + filename + ' failed.'));
         });
