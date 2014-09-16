@@ -7,16 +7,16 @@
  */
 'use strict';
 
-var fs = require('fs');
-var Q = require('q');
-var AWS = require('aws-sdk');
-var cloudwatch;
+var fs  = require('fs'),
+    Q   = require('q'),
+    AWS = require('aws-sdk'),
+    cloudwatch;
 
 module.exports = {
 
     getProperty : function(property, file) {
-        return file.toString().split("\n").filter(function(line) {
-            return line.search(property) != -1;
+        return file.toString().split('\n').filter(function(line) {
+            return line.search(property) !== -1;
         })[0].split('=')[1];
     },
 
@@ -29,7 +29,7 @@ module.exports = {
             }
 
             AWS.config.update({
-                region: "eu-west-1",
+                region: 'eu-west-1',
                 accessKeyId: module.exports.getProperty('aws.access.key', data),
                 secretAccessKey: module.exports.getProperty('aws.access.secret.key', data)
             });
@@ -85,7 +85,7 @@ module.exports = {
                         Value : 'Rules'
                     }
                 ]
-            })
+            });
         }
 
         if(metricData.totalSelectors) {
@@ -99,7 +99,7 @@ module.exports = {
                         Value : 'Total Selectors'
                     }
                 ]
-            })
+            });
         }
 
         if(metricData.averageSelectors) {
@@ -113,7 +113,7 @@ module.exports = {
                         Value : 'Average Selectors'
                     }
                 ]
-            })
+            });
         }
 
         cloudwatch.putMetricData(params, function (err, data) {

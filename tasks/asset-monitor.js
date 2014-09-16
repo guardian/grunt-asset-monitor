@@ -9,17 +9,15 @@
 
 module.exports = function (grunt) {
 
-    var analyse = require('./lib/analyse.js')(grunt);
-
     grunt.registerMultiTask('assetmonitor', 'Analyse and log static asset metrics', function () {
 
-        var done = this.async();
-
-	    analyse.options = this.options({
+        var options = this.options({
             gzipLevel: 6,
             pretty: true,
             credentials: '/etc/gu/frontend.properties'
         });
+        var analyse = require('./lib/analyse.js')(grunt, options);
+        var done = this.async();
 
         grunt.util.async.forEachSeries(grunt.file.expand(this.data.src), function(path, next) {
 
@@ -28,7 +26,7 @@ module.exports = function (grunt) {
                 next();
             }
 
-            analyse.it(path, next);
+            analyse(path, next);
 
         }, function() {
             done();

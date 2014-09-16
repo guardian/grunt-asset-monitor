@@ -21,12 +21,13 @@
   "dependencies": {
     "prettysize": "~0.0.2",
     "aws-sdk": "~2.0.0-rc4",
-    "q": "~0.9.7",
-    "css-parse": "~1.7.0"
+    "q": "~1.0.0",
+    "css-parse": "~2.0.0",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3"
+    "grunt-contrib-jshint": "~0.10.0"
   },
   "keywords": [
     "gruntplugin",
