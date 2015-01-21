@@ -1,16 +1,16 @@
 grunt-asset-monitor
 ===================
 
-Grunt task to analyse and log simple metrics of static assets to Amazon CloudWatch.
+Grunt task to analyse and log simple metrics of static assets to Amazon CloudWatch or StatsD.
 
 This is tasks is used by the [Guardian's](http://www.theguardian.com/uk?view=mobile) frontend web project to monitor the performance of their client-side assets.
-Once the data is in CloudWatch it can then be used to set alert thresholds when certain assets get too large.
+Once the data is in CloudWatch/StatsD it can then be used to set alert thresholds when certain assets get too large.
 
 ![Output screenshot](http://cl.ly/image/3343153U1D25/Screenshot%20from%202013-12-24%2014%3A19%3A38.png)
 
 ## Getting Started
 
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -25,7 +25,7 @@ grunt.loadNpmTasks('grunt-asset-monitor');
 ```
 ## Options
 
-### Credentials
+### credentials
 
 Type: `String`
 Default: `/etc/gu/frontend.properties`
@@ -35,6 +35,25 @@ Location of your properties file containing your AWS api credentials. This shoul
 aws.access.region=YOUREGION
 aws.access.key=YOURKEY
 aws.access.secret.key=YOURSECRET
+```
+
+### statsd
+
+Type: `Object`
+Default: `null`
+
+JSON object describing your connection to StatsD. Specifying anything other than null for this property will send the analysis to statsD with the default paramers. We use [node-statsd](https://github.com/sivy/node-statsd) to send these messages, so please refer to this documentation for the latest information. Default parameters are:
+```js
+statsd: {
+    host: 'localhost',
+    port: '8125',
+    prefix: '',
+    suffix: '',
+    globalize: false,
+    cacheDns: false,
+    mock: false,
+    global_tags: []
+}
 ```
 
 ### gzipLevel
@@ -74,6 +93,25 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-asset-monitor');
 
 grunt.registerTask('default', ['monitor']);
+```
+
+### StatsD
+
+Running monitor to StatsD. This will use the default host and port of localhost:8125
+```js
+assetmonitor: {
+  dist: {
+    src: [
+      'javascripts/app.js',
+      'stylesheets/global.css'
+    ],
+    options: {
+        statsd: {
+            prefix: "gu.assets"
+        }
+    }
+  }
+}
 ```
 
 ### Multiple Files
